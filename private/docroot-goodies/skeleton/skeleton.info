@@ -1,0 +1,12 @@
+name = Skeleton Theme
+description = The base theme for Skeleton.
+package = Core
+core = 7.x
+
+; CSS
+; --------------
+stylesheets[all][] = css/styles.css
+
+; SCRIPTS
+; --------------
+scripts[] = js/main.js
