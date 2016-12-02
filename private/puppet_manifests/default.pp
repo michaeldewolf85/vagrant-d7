@@ -178,7 +178,7 @@ class drupal {
             require => Exec['remove-docroot'];
         "install-drupal":
             command => '/home/vagrant/.composer/vendor/bin/drush site-install --db-url=mysql://vagrant:vagrant@localhost:3306/vagrant --account-name=vagrant --account-pass=vagrant --site-name=D7',
-            user => "www-data",
+            cwd => '/vagrant/docroot',
             require => Exec['build-drupal'];
     }
 }
