@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # @see https://docs.vagrantup.com/v2/synced-folders/nfs.html
   config.vm.network "private_network", ip: "192.168.50.10"
   config.vm.hostname = "local.vagrant-d7.com"
-  config.vm.synced_folder ".", "/vagrant", owner: "www-data"
+  config.vm.synced_folder "..", "/vagrant", owner: "www-data"
 
   # Improve performance.
   # @see http://www.stefanwrobel.com/how-to-make-vagrant-performance-not-suck
