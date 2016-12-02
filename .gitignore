@@ -1,0 +1,2 @@
+# Ignore docroot since we use Make.
+docroot
