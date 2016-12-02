@@ -1,6 +1,0 @@
----
-redirects:
-  - source: index
-    redirect: <front>
-  - source: about
-    redirect: about-us
