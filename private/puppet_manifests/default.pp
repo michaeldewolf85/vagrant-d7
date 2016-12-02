@@ -171,13 +171,15 @@ class drush {
 
 class drupal {
     exec {
-        "create-docroot":
-            command => '/bin/mkdir /vagrant/private/docroot',
-            unless => '/bin/ls /vagrant/private/docroot';
-        "secret-settings":
-            command => '/bin/cp /vagrant/private/docroot-goodies/example.local.settings.php /vagrant/docroot/sites/default/local.settings.php',
-            onlyif => '/bin/ls /vagrant/private/docroot-goodies/example.local.settings.php',
-            unless => '/bin/ls /vagrant/private/docroot/sites/default/local.settings.php';
+        "remove-docroot":
+            command => '/bin/rm -rf /vagrant/docroot';
+        "build-drupal":
+            command => '/home/vagrant/.composer/vendor/bin/drush make  /vagrant/private/drupal7.make /vagrant/docroot',
+            require => Exec['remove-docroot'];
+        "install-drupal":
+            command => '/home/vagrant/.composer/vendor/bin/drush site-install --db-url=mysql://vagrant:vagrant@localhost:3306/vagrant --account-name=vagrant --account-pass=vagrant --site-name=D7',
+            user => "www-data",
+            require => Exec['build-drupal'];
     }
 }
 
